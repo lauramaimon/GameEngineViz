@@ -184,6 +184,11 @@ $(document).ready(function() {
     // add event listener for completion
     $(this).one("complete", completion);
 
+    // add event listener for errors
+    $(this).bind("error", function(e) {
+        alert(e.detail.msg);
+    });
+
 });
 
 editor.commands.on("exec", function(e) { 

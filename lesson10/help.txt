@@ -1,0 +1,4 @@
+
+When you walk into the room, you see a knight. He looks a little, uh, stiff. You think you'd better try to get him looking a little more animated. 
+
+Hint: Check out the Knight class to see what animations the knight knows how to do. It looks like they are never getting initated...
