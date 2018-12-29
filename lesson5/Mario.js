@@ -8,9 +8,7 @@ class Mario extends Sprite {
         this.y = posY;
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         if(pressedKeys.contains(37))
@@ -23,9 +21,7 @@ class Mario extends Sprite {
             this.moveY(3);
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
     }

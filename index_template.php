@@ -23,7 +23,7 @@
                     bottom: 0;
                     left: -15px;
                     right: 0;
-                    height: 93%;
+                    height: 89%;
                     overflow: hidden;
                 }
             .col {
@@ -44,7 +44,7 @@
 <button id="back" type="button" class="btn btn-primary btn-block mt-3" style="display:none">Congratulations! Click here to return to the menu.</button>
                 </div>
 
-                <div class="col" style="background-color: #232323;">
+                <div class="col h-100" style="background-color: #232323;">
                     <pre id="editor"></pre>
 
                     <script src="../src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -76,7 +76,7 @@ foreach (glob("*.js") as $filename) {
 }
 ?>
                             </ul>
-                            <button id="execute" type="button" class="btn btn-success float-right">Execute</button>
+                            <button id="execute" type="button" class="btn btn-success float-right">Run</button>
                         </div>
                     </div>
                 </div>

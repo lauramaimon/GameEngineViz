@@ -12,11 +12,10 @@ class Mario extends Sprite {
         this.jumping = false;
         this.floor = 437;
         this.facingRight = true;
+        this.pivotX = 25;
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
 
@@ -53,9 +52,11 @@ class Mario extends Sprite {
         }
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    pause() {
+        this.update = () => {};
+    }
+
+    
     draw(g){
         super.draw(g);
     }

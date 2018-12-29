@@ -7,9 +7,6 @@ class Monitor {
     add(mf) {
         this.monitoredfunctions.push(mf)
     }
-    // beginMonitoring() {
-    //     this.monitoredfunctions.forEach((f) => { f.zeroCount(); });
-    // }
     numCalls() {
         let c = 0;
         this.monitoredfunctions.forEach((f) => { c += f.getCount(); });
@@ -26,7 +23,6 @@ class MonitoredFunction {
             return f.apply(this, args);
         }
         this.getCount = function() { return count; };
-        // this.zeroCount = function() { count = 0; };
         m.add(this);
     }
     get() {

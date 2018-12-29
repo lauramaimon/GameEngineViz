@@ -4,31 +4,33 @@ class Knight extends AnimatedSprite {
 
     constructor(id, posX, posY){
         super(id, "knight", 10);
+        // Add animations. To play an animation, call
+        // this.playAnimation("walk")
+        // every frame that you want to play the animation.
         this.addAnimation("walk", 1, 4, true);
         this.addAnimation("stand", 0, 0, false);
         this.addAnimation("jump_up", 6, 7, false);
         this.addAnimation("jump_down", 8, 9, false);
         this.x = posX;
         this.y = posY;
+        this.scaleX = 1; // hint: if this is negative, the sprite is flipped!
+        this.scaleY = 1;
+        this.pivotX = 20;
         this.xspeed = 0;
-        this.yspeed = 0;
+        this.yspeed = 0; // hint: if this is negative, the knight is moving upwards!
         this.frameNum = 0;
         this.jumping = false;
         this.floor = 236;
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
 
         if(pressedKeys.contains(37)) {
             this.moveX(-3);
-            // this.scaleX = -1;
-            // if (!this.jumping) {
-            //     this.playAnimation("walk");
-            // }
+
+
         }
         if(pressedKeys.contains(38) && !this.jumping) {
             this.yspeed = -12;
@@ -36,22 +38,14 @@ class Knight extends AnimatedSprite {
         }
         if(pressedKeys.contains(39)) {
             this.moveX(3);
-            // this.scaleX = 1;
-            // if (!this.jumping) {
-            //     this.playAnimation("walk");
-            // }
+
+
         }
-        // if(!pressedKeys.contains(39) && !pressedKeys.contains(37) && !this.jumping) {
-        //     this.playAnimation("stand");
-        // }
+
+
         this.applyVelocity();
         this.applyGravity();
 
-        // if (this.jumping && this.yspeed <= 0) {
-        //     this.playAnimation("jump_up");
-        // } else if (this.jumping && this.yspeed > 0) {
-        //     this.playAnimation("jump_down");
-        // }
 
         this.frameNum += 1;
     }
@@ -71,9 +65,7 @@ class Knight extends AnimatedSprite {
         }
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
     }

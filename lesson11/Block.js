@@ -14,11 +14,10 @@ class Block extends Sprite {
         this.num = num;
         Block.lastKicked = 0;
         Block.numKicked = 0;
+        Block.outOfOrder = false;
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
 
@@ -60,9 +59,7 @@ class Block extends Sprite {
         this.y += this.yspeed;
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
     }

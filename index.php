@@ -19,7 +19,7 @@
                     <h1>Welcome to GameEngineViz!</h1>
                     <p>A project that is in need of a slightly better name and slightly better looks</p>
                     </br>
-                    <h2>Unit 1: Displaying the Display Tree</h2>
+                    <!-- <h2>Unit 1: Displaying the Display Tree</h2> -->
                     <ol>
                         <li><a href="lesson1/">Lesson 1: test</a></li>
                         <li><a href="lesson2/">Lesson 2: test</a></li>
@@ -31,7 +31,10 @@
                         <li><a href="lesson8/">Lesson 8: Free Hugs - Version 1</a></li>
                         <li><a href="lesson9/">Lesson 9: Free Hugs - Version 2</a></li>
                         <li><a href="lesson10/">Lesson 10: Look Alive</a></li>
-                        <li><a href="lesson11/">Lesson 11: I'm out of names</a></li>
+                        <li><a href="lesson11/">Lesson 11: Rainbow</a></li>
+                        <li><a href="lesson12/">Lesson 12: Puzzling</a></li>
+                        <li><a href="lesson13/">Lesson 13: Friction</a></li>
+                        <li><a href="lesson14/">Lesson 14: Invincibility</a></li>
                     </ol>
                 </div>
             </div>

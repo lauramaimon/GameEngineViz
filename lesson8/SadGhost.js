@@ -1,10 +1,6 @@
 "use strict";
 
-/**
- * A ghost
- * */
 class SadGhost extends AnimatedSprite {
-
 
     constructor(id, posX, posY){
         super(id, "ghost", 4);
@@ -12,16 +8,17 @@ class SadGhost extends AnimatedSprite {
         this.y = posY;
         this.frameNum = 0;
         let mood = 0;
+
+        // hugging increases the ghost's "mood" by 20
         this.hug = () => { mood += 20; };
         this.getMood = () => { return mood; };
+
         this.addAnimation("emotions", 0, 3, false);
         this.win_animation_frame = 0;
         this.msg = "";
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         this.frameNum += 1;
@@ -34,13 +31,17 @@ class SadGhost extends AnimatedSprite {
         if (this.getMood() < 60) {
             this.goToFrame(0);
             this.msg = "The ghost looks sad...";
-        } else if (this.getMood() < 120) {
+        } 
+        else if (this.getMood() < 120) {
             this.goToFrame(1);
             this.msg = "The ghost cheered up a little...";
-        } else if (this.getMood() == 120) {
+        } 
+        // it looks like the ghost would be happy if it had 120 "mood" points
+        else if (this.getMood() == 120) {
             this.goToFrame(2);
             this.msg = "The ghost looks kinda happy!";
-        } else {
+        } 
+        else {
             this.goToFrame(3);
             this.msg = "The ghost looks a little creeped out...";
         }
@@ -52,9 +53,7 @@ class SadGhost extends AnimatedSprite {
     }
 
 
-    /**
-     * Draws this image to the screen
-     */
+    // Draws this object
     draw(g){
         super.draw(g);
         g.font = "24px courier";

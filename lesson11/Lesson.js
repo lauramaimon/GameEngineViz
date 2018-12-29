@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * Main class
- */
+// main class
 class Lesson11Game extends Game {
 
     // initialization
@@ -18,6 +16,7 @@ class Lesson11Game extends Game {
         this.door.scaleX = 2.4;
         this.door.scaleY = 2.4;
         Lesson11Game.fail = this.fail;
+        Lesson11Game.mario = this.mario;
 
         this.blocks = [[], [], []];
 
@@ -49,39 +48,32 @@ class Lesson11Game extends Game {
         this.addChild(this.floor);
         this.addChild(this.mario);
 
-        this.colliding = false;
+
     }
 
-    /*
-     * This is the update loop. 
-     * Here, game state will be updated according to user input and game mechanics.
-     * The code within this function will run 60 times per second.
-     */
+    // invoked every frame
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
 
+        // hint: to check for collisions, use this.mario.collidesWithAABB(object)
+        // it will return 0 if no collision occured and nonzero if a collision occured
 
-        let collidingThisFrame = false;
+
         for (let i = 0; i < 3; i++) {
             this.blocks[i].forEach((block) => {
-                console.log("BLOCK NUM " + block.num + " COLLIDING " + this.mario.collidesWith(block));
                 
-                if (this.blocks[i].length > 0 && this.mario.collidesWith(block) && !this.colliding) {
+                if (this.blocks[i].length > 0 && this.mario.collidesWithAABB(block) != 0) {
                     this.kickBlock(i);
                 }
-                if (this.mario.collidesWith(block)) {
-                    this.colliding = true;
-                    collidingThisFrame = true;
 
-                }
+
             });
         }
-        if (!collidingThisFrame) {
-            this.colliding = false;
-        }
+
 
         // Win condition - fulfill these requirements to complete the challenge!
-        if (Block.numKicked == this.numBlocks) {
+        // Kick all the blocks in the correct order!
+        if (!Block.outOfOrder && Block.numKicked == this.numBlocks) {
             if (this.winAnimationFrame >= 50) {
                 var complete = new Event("complete");
                 window.parent.document.dispatchEvent(complete);
@@ -91,7 +83,6 @@ class Lesson11Game extends Game {
             this.winAnimationFrame += 1;
         }
     }
-
 
 
     kickBlock(stackNum) {
@@ -108,15 +99,12 @@ class Lesson11Game extends Game {
 
 
     fail() {
+        if (Block.outOfOrder) return;
+        Block.outOfOrder = true;
         window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "GAME OVER - You kicked the blocks out of order"}}));
-        this.pause();
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g) {
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
@@ -124,9 +112,7 @@ class Lesson11Game extends Game {
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- */
+
 function tick() {
     game.nextFrame();
 }

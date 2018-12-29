@@ -68,10 +68,7 @@ class LabOneGame extends Game{
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- * YOU NEED TO COPY THIS VERBATIM ANYTIME YOU CREATE A GAME
- */
+
 function tick(){
 	game.nextFrame();
 }

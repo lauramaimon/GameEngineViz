@@ -1,2 +1,2 @@
 Lesson.js/0,0;0,0/true/true
-Knight.js/0,0;0,0/false/true
+Knight.js/0,31;33,40;42,43;45,47;49,1000/false/true

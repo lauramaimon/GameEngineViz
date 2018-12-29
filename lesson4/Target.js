@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * A target that mysteriously flashes blue every 30 frames...
- * */
+// A target that mysteriously flashes blue every 30 frames...
 class Target extends Sprite {
 
     constructor(id, posX, posY){
@@ -10,24 +8,22 @@ class Target extends Sprite {
         this.x = posX;
         this.y = posY;
         this.hitcount = 0;
+        this.blue = false;
         this.eventTarget = new EventTarget();
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         if (Lesson4Game.frame_num % Lesson4Game.target_rate == 0) {
             this.loadImage("blue_target.png");
+            this.blue = true;
         } else if (Lesson4Game.frame_num % Lesson4Game.target_rate == 10) {
             this.loadImage("target.png");
+            this.blue = false;
         }
     }
 
-    /**
-     * Draws this image to the screen
-     */
     draw(g){
         super.draw(g);
         g.font = "48px courier";

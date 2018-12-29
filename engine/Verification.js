@@ -68,3 +68,20 @@ function checkIfAnimated(lesson) {
     }
     return 0;
 }
+
+this.wallTouches = 0;
+this.touchingLastFrame = false;
+
+function checkWallJumping(lesson) {
+    if (lesson.mario.collidesWith(lesson.leftwall) || lesson.mario.collidesWith(lesson.rightwall)) {
+        if (!this.touchingLastFrame) {
+            this.wallTouches += 1;
+            this.touchingLastFrame = true;
+
+        }
+    } else {
+        this.touchingLastFrame = false;
+    }
+    console.log(this.wallTouches);
+    return this.wallTouches;
+}

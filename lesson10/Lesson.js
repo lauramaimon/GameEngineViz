@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * Main class
- */
+// main class
 class Lesson10Game extends Game {
 
     // initialization
@@ -22,14 +20,9 @@ class Lesson10Game extends Game {
         this.repeat = 740;
     }
 
-    /*
-     * This is the update loop. 
-     * Here, game state will be updated according to user input and game mechanics.
-     * The code within this function will run 60 times per second.
-     */
+    // invoked every frame
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
-        // console.log(typeof pressedKeys);
 
         let x = 0
         if (this.frameNum % this.repeat == 0) {
@@ -88,21 +81,13 @@ class Lesson10Game extends Game {
         this.frameNum += 1;
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g) {
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
     }
 }
 
-
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- */
 function tick() {
     game.nextFrame();
 }

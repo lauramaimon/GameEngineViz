@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * Main class
- */
+// main class
 class Lesson7Game extends Game {
 
     // initialization
@@ -33,19 +31,15 @@ class Lesson7Game extends Game {
 
     }
 
-    /*
-     * This is the update loop. 
-     * Here, game state will be updated according to user input and game mechanics.
-     * The code within this function will run 60 times per second.
-     */
+    // invoked every frame
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
         this.bluebuttons.forEach((button) => {
             let colliding = this.mario.collidesWith(button) || this.toad.collidesWith(button)
-            if (colliding && !(button.getState() == BlueButton.state.locked) && this.greenbutton.getPressed()) {
+            if (colliding && button.getState() != BlueButton.state.locked && this.greenbutton.getPressed()) {
                 button.dispatchEvent(new CustomEvent("onLockDown", {detail: button}));
             }
-            else if (colliding && !(button.getState() == BlueButton.state.locked) && !this.greenbutton.getPressed()) {
+            else if (colliding && button.getState() != BlueButton.state.locked && !this.greenbutton.getPressed()) {
                 button.dispatchEvent(new CustomEvent("onPressDown", {detail: button}));
             }
             else if (!colliding && button.getState() == BlueButton.state.pressed) {
@@ -61,6 +55,10 @@ class Lesson7Game extends Game {
         }
         let start = Lesson7Game.monitor.numCalls()
 
+        // add code to pick up and drop toad!
+        // hint: check out the usage of addChild in the constructor of this class
+        //       there is also a matching removeChild
+
 
 
         if (Lesson7Game.monitor.numCalls() > start) {
@@ -71,7 +69,6 @@ class Lesson7Game extends Game {
         if (this.bluebuttons[0].getState() == BlueButton.state.locked && 
             this.bluebuttons[1].getState() == BlueButton.state.locked && 
             this.bluebuttons[2].getState() == BlueButton.state.locked) {
-            // TODO: obfuscate this such that students can't run this
             if (this.win_animation_frame >= 50) {
                 var complete = new Event("complete");
                 window.parent.document.dispatchEvent(complete);
@@ -82,11 +79,7 @@ class Lesson7Game extends Game {
         }
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g) {
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
@@ -94,10 +87,7 @@ class Lesson7Game extends Game {
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- * YOU NEED TO COPY THIS VERBATIM ANYTIME YOU CREATE A GAME
- */
+
 function tick() {
     game.nextFrame();
 }

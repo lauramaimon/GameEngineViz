@@ -1,8 +1,5 @@
 "use strict";
 
-/**
- * A Button
- * */
 class BlueButton extends Sprite {
 
 
@@ -18,9 +15,7 @@ class BlueButton extends Sprite {
         this.addEventListener("onLockDown", this.onLockDown, false);
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
     }
@@ -46,9 +41,7 @@ class BlueButton extends Sprite {
         console.log("LOCKED");
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
     }

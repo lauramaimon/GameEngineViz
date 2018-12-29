@@ -13,23 +13,17 @@ class Mario extends Sprite {
         this.floor = 307;
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         if(pressedKeys.contains(37))
             this.moveX(-3);
-            // this.xspeed = -3;
         if(pressedKeys.contains(38) && !this.jumping) {
             this.yspeed = -12;
             this.jumping = true;
         }
         if(pressedKeys.contains(39))
             this.moveX(3);
-            // this.xspeed = 3;
-        // if(pressedKeys.contains(40))
-        //     this.moveY(3);
         this.applyVelocity();
         this.applyGravity();
         this.frameNum += 1;
@@ -50,9 +44,6 @@ class Mario extends Sprite {
         }
     }
 
-    /**
-     * Draws this image to the screen
-     */
     draw(g){
         super.draw(g);
     }

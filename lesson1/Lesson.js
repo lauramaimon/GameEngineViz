@@ -46,23 +46,17 @@ class LabOneGame extends Game{
         }
 
         // Win condition - fulfill these requirements to complete the challenge!
-        // this should be hidden... 
         if (
             (this.coin1.alpha == 0.0) && 
             (this.coin2.alpha == 0.0) && 
             (this.coin3.alpha == 0.0)
         ) {
-            // TODO: obfuscate this such that students can't run this
             var complete = new Event("complete");
             window.parent.document.dispatchEvent(complete);
         }
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g){
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
@@ -76,10 +70,7 @@ class LabOneGame extends Game{
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- * YOU NEED TO COPY THIS VERBATIM ANYTIME YOU CREATE A GAME
- */
+
 function tick(){
     game.nextFrame();
 }

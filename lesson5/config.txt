@@ -1,4 +1,4 @@
-Lesson.js/0,30;32,61;63,105/false/true
+Lesson.js/0,28;30,58;64,1000/false/true
 BlueButton.js/0,0;0,0/true/true
 GreenButton.js/0,0;0,0/true/true
 Toad.js/0,0;0,0/true/true

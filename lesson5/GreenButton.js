@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * A Button
- * */
+
 class GreenButton extends Sprite {
 
 
@@ -16,9 +14,7 @@ class GreenButton extends Sprite {
         this.addEventListener("onPressUp", this.onPressUp, false);
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
     }
@@ -35,9 +31,7 @@ class GreenButton extends Sprite {
     }
 
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
     }

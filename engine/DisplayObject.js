@@ -199,6 +199,37 @@ class DisplayObject{
 
 	}
 
+	collidesWithAABB(other){
+		var rect1 = this.getGlobalHitbox();
+		var rect2 = other.getGlobalHitbox();
+
+	    let width2 = rect2.p2.x - rect2.p1.x;
+	    let width1 = rect1.p2.x - rect1.p1.x;
+	    let height2 = rect2.p3.y - rect2.p2.y;
+	    let height1 = rect1.p3.y - rect1.p2.y;
+
+		if (rect1.p1.x < rect2.p2.x &&
+		   rect1.p2.x > rect2.p1.x &&
+		   rect1.p1.y < rect2.p3.y &&
+		   rect1.p3.y > rect2.p1.y) {
+			// collision detected
+			if (rect1.p1.x < rect2.p1.x && rect1.p1.y < rect2.p1.y) {
+				return 1;
+			}
+			if (rect1.p1.x < rect2.p1.x && rect1.p1.y >= rect2.p1.y) {
+				return 2;
+			}
+			if (rect1.p1.x >= rect2.p1.x && rect1.p1.y < rect2.p1.y) {
+				return 3;
+			}
+			if (rect1.p1.x >= rect2.p1.x && rect1.p1.y >= rect2.p1.y) {
+				return 4;
+			}
+		}
+		// no collision detected
+		return 0;
+	}
+
 	/**
 	 * THIS AREA CONTAINS MOSTLY GETTERS AND SETTERS!
 	 *

@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * Main class
- */
+// main class
 class Lesson5Game extends Game {
 
     // initialization
@@ -30,21 +28,20 @@ class Lesson5Game extends Game {
         this.addChild(this.mario);
 
 
+
+
     }
 
-    /*
-     * This is the update loop. 
-     * Here, game state will be updated according to user input and game mechanics.
-     * The code within this function will run 60 times per second.
-     */
+    // invoked every frame
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
         this.bluebuttons.forEach((button) => {
             let colliding = this.mario.collidesWith(button) || this.toad.collidesWith(button)
-            if (colliding && !(button.state == BlueButton.state.locked) && this.greenbutton.pressed) {
+            if (colliding && button.state != BlueButton.state.locked && this.greenbutton.pressed) {
+                // to lock a blue button, press the blue button and the green button simultaneously
                 button.dispatchEvent(new CustomEvent("onLockDown", {detail: button}));
             }
-            else if (colliding && !(button.state == BlueButton.state.locked) && !this.greenbutton.pressed) {
+            else if (colliding && button.state != BlueButton.state.locked && !this.greenbutton.pressed) {
                 button.dispatchEvent(new CustomEvent("onPressDown", {detail: button}));
             }
             else if (!colliding && button.state == BlueButton.state.pressed) {
@@ -59,13 +56,17 @@ class Lesson5Game extends Game {
             this.greenbutton.dispatchEvent(new CustomEvent("onPressUp", {detail: this.greenbutton}));
         }
 
+        // add code to pick up and drop toad!
+        // hint: check out the usage of addChild in the constructor of this class
+        //       there is also a matching removeChild
+
+
 
 
         // Win condition - fulfill these requirements to complete the challenge!
         if (this.bluebuttons[0].state == BlueButton.state.locked && 
             this.bluebuttons[1].state == BlueButton.state.locked && 
             this.bluebuttons[2].state == BlueButton.state.locked) {
-            // TODO: obfuscate this such that students can't run this
             if (this.win_animation_frame >= 50) {
                 console.log(this.win_animation_frame);
                 var complete = new Event("complete");
@@ -77,11 +78,7 @@ class Lesson5Game extends Game {
         }
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g) {
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
@@ -89,10 +86,6 @@ class Lesson5Game extends Game {
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- * YOU NEED TO COPY THIS VERBATIM ANYTIME YOU CREATE A GAME
- */
 function tick() {
     game.nextFrame();
 }

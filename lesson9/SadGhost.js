@@ -1,10 +1,6 @@
 "use strict";
 
-/**
- * A ghost
- * */
 class SadGhost extends AnimatedSprite {
-
 
     constructor(id, posX, posY){
         super(id, "ghost", 4);
@@ -12,8 +8,11 @@ class SadGhost extends AnimatedSprite {
         this.y = posY;
         this.frameNum = 0;
         let mood = 0;
+
+        // hugging increases the ghost's "mood" by 20
         this.hug = () => { mood += 20; };
         this.getMood = () => { return mood; };
+        
         let timeHappy = 0;
         this.incTimeHappy = () => { timeHappy += 1; };
         this.resetTimeHappy = () => { timeHappy = 0; };
@@ -24,9 +23,7 @@ class SadGhost extends AnimatedSprite {
         this.msgPos = Math.random();
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         this.frameNum += 1;
@@ -40,11 +37,14 @@ class SadGhost extends AnimatedSprite {
             this.goToFrame(0);
             this.msg = "Sad";
             this.resetTimeHappy();
-        } else if (this.getMood() < 120) {
+        } 
+        else if (this.getMood() < 120) {
             this.goToFrame(1);
             this.msg = "Better";
             this.resetTimeHappy();
-        } else if (this.getMood() == 120) {
+        } 
+        // it looks like the ghost would be happy if it had 120 "mood" points
+        else if (this.getMood() == 120) {
             this.goToFrame(2);
             this.msg = "Happy";
             this.incTimeHappy();
@@ -57,7 +57,8 @@ class SadGhost extends AnimatedSprite {
                     Lesson9Game.ghosts.splice(Lesson9Game.ghosts.indexOf(this), 1);
                 }
             }
-        } else {
+        } 
+        else {
             this.goToFrame(3);
             this.msg = "Creeped out";
             this.resetTimeHappy();
@@ -78,9 +79,6 @@ class SadGhost extends AnimatedSprite {
     }
 
 
-    /**
-     * Draws this image to the screen
-     */
     draw(g){
         super.draw(g);
         g.font = "24px courier";

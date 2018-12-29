@@ -1,8 +1,6 @@
 "use strict";
 
-/**
- * Main class
- */
+// main class
 class Lesson9Game extends Game {
 
     // initialization
@@ -26,18 +24,18 @@ class Lesson9Game extends Game {
         this.addChild(ghost);
         ghost.scaleX = 1.8;
         ghost.scaleY = 1.8;
-        this.currentCollisions = [];
+        this.won = false;
+        
+
     }
 
-    /*
-     * This is the update loop. 
-     * Here, game state will be updated according to user input and game mechanics.
-     * The code within this function will run 60 times per second.
-     */
+    // invoked every frame
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
 
-        this.time--;
+        if (!this.won) {
+            this.time--;
+        }
 
         if (Lesson9Game.ghosts.length < 4) {
             if (Math.random() < 0.005) {
@@ -54,15 +52,6 @@ class Lesson9Game extends Game {
                 ghost.hug();
             }
         });
-        
-
-
-
-
-
-
-
-
 
 
         if (this.time <= 0 && Lesson9Game.happyGhosts.length <= 5) {
@@ -71,6 +60,7 @@ class Lesson9Game extends Game {
         }
 
         // Win condition - fulfill these requirements to complete the challenge!
+        // At least 6 ghosts must have been happy for at least 60 frames
         if (Lesson9Game.happyGhosts.length > 5) {
             if (this.winAnimationFrame >= 50) {
                 var complete = new Event("complete");
@@ -79,14 +69,11 @@ class Lesson9Game extends Game {
 
             this.door.playAnimation("open");
             this.winAnimationFrame += 1;
+            this.won = true;
         }
     }
 
-    /*
-     * This is the draw loop.
-     * Here, visible elements will be updated on screen.
-     * Similarly to update(), draw() will run 60 times per second immediately following update.
-     */
+    
     draw(g) {
         g.clearRect(0, 0, this.width, this.height);
         super.draw(g);
@@ -98,10 +85,7 @@ class Lesson9Game extends Game {
 }
 
 
-/**
- * THIS IS THE BEGINNING OF THE PROGRAM
- * YOU NEED TO COPY THIS VERBATIM ANYTIME YOU CREATE A GAME
- */
+
 function tick() {
     game.nextFrame();
 }

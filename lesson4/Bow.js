@@ -11,9 +11,7 @@ class Bow extends Sprite {
 
     }
 
-    /**
-     * Invoked every frame, manually for now, but later automatically if this DO is in DisplayTree
-     */
+    // invoked every frame
     update(pressedKeys, gamePads){
         super.update(pressedKeys, gamePads);
         this.arrows.forEach(arrow => {arrow.update()});
@@ -24,9 +22,7 @@ class Bow extends Sprite {
 
     }
 
-    /**
-     * Draws this image to the screen
-     */
+    
     draw(g){
         super.draw(g);
         this.arrows.forEach(arrow => {arrow.draw(g)});
