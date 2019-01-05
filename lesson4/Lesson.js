@@ -7,8 +7,10 @@ class Lesson4Game extends Game {
     constructor(canvas) {
         super("Puzzle four", 800, 600, canvas);
 
-        this.bow = new Bow("bow", 0, 175);
-        this.door = new Door("door", 615, 130, 5);
+        this.bow = new Bow("bow", 0, 165);
+        this.door = new Door("door", 615, 98, 5);
+        this.scenery = new Scenery("scenery", 0, 0, canvas);
+        this.addChild(this.scenery);
         this.addChild(this.door);
         this.addChild(this.bow);
         this.door.scaleX = 3.2;
@@ -16,7 +18,7 @@ class Lesson4Game extends Game {
         this.door.addAnimation("open", 0, 4, false);
         this.win_animation_frame = 0;
         
-        Lesson4Game.targ = new Target("target", 650, 200);
+        Lesson4Game.targ = new Target("target", 650, 170);
 
         // this keeps track of the current frame number in the game
         Lesson4Game.frame_num = 0;
@@ -39,13 +41,14 @@ class Lesson4Game extends Game {
 
         // Win condition - fulfill these requirements to complete the challenge!
         if (Lesson4Game.targ.hitcount == 20 && Lesson4Game.num_arrows <= 20) {
-            if (this.win_animation_frame >= 50) {
-                console.log(this.win_animation_frame);
+            if (this.scenery.finished) {
                 var complete = new Event("complete");
                 window.parent.document.dispatchEvent(complete);
             }
-
-            this.door.playAnimation("open");
+            if (this.win_animation_frame == 0) {
+                this.scenery.animate();
+                this.door.open();
+            }
             Lesson4Game.targ.alpha = 0.0;
             this.win_animation_frame += 1;
         }

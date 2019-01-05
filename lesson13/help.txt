@@ -4,3 +4,5 @@ Looks like there's only one way to go.
 Hint: You might need to implement camera scrolling so you can see what you're doing!
 
 Hint: To move the "camera" up, you need to move everything in the scene down.
+
+Hint: Both Lesson.js and Mario.js are editable

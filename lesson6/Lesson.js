@@ -17,6 +17,7 @@ class Lesson6Game extends Game {
         this.door.addAnimation("open", 0, 4, false);
         this.win_animation_frame = 0;
 
+        // all objects are initially a child of the game
         this.addChild(this.door);
         this.addChild(this.greenbutton);
         this.addChild(this.bluebutton);
@@ -53,6 +54,8 @@ class Lesson6Game extends Game {
         // add code to pick up and drop toad!
         // hint: check out the usage of addChild in the constructor of this class
         //       there is also a matching removeChild
+        // hint: to check if a key is currently being pressed down, you can use
+        //       pressedKeys.contains(n) where n is a integer key code
 
 
 

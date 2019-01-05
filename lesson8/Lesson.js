@@ -39,6 +39,8 @@ class Lesson8Game extends Game {
             this.incTimeHappy();
         } 
 
+        // mario hugs the ghost every frame that they are colliding
+        // this seems like an awkward quantity of hugging
         if (this.mario.collidesWith(this.ghost)) {
             this.ghost.hug();
         }

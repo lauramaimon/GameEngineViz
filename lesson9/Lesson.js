@@ -24,7 +24,6 @@ class Lesson9Game extends Game {
         this.addChild(ghost);
         ghost.scaleX = 1.8;
         ghost.scaleY = 1.8;
-        this.won = false;
         
 
     }
@@ -33,20 +32,22 @@ class Lesson9Game extends Game {
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
 
-        if (!this.won) {
-            this.time--;
-        }
+        this.time--;
 
-        if (Lesson9Game.ghosts.length < 4) {
+        if (Lesson9Game.ghosts.length < 3) {
             if (Math.random() < 0.005) {
                 let ghost = new SadGhost("ghost" + this.time, 100 + (Math.random() * 450), 210)
                 Lesson9Game.ghosts.push(ghost);
                 this.addChild(ghost);
                 ghost.scaleX = 1.8;
                 ghost.scaleY = 1.8;
+
+
             }
         }
 
+        // mario hugs a ghost every frame that he is colliding with it
+        // this seems like an awkward quantity of hugging
         Lesson9Game.ghosts.forEach((ghost) => {
             if (this.mario.collidesWith(ghost)) {
                 ghost.hug();
@@ -69,7 +70,6 @@ class Lesson9Game extends Game {
 
             this.door.playAnimation("open");
             this.winAnimationFrame += 1;
-            this.won = true;
         }
     }
 

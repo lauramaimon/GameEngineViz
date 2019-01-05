@@ -91,7 +91,6 @@ class DisplayObject{
 		return at;
 	}
 
-	/* Right now, this returns  */
 	getGlobalHitbox(){
 		var t = this.getGlobalTransform();
 
@@ -102,6 +101,11 @@ class DisplayObject{
 		
 		return {p1:p_1, p2:p_2, p3:p_3, p4:p_4};
 	}
+
+	// For water
+	getGlobalHitboxWithDimensions() {
+        return {x:this.x-this.pivotX, y:this.y-this.pivotY, width: this.getUnscaledWidth(), height: this.getUnscaledHeight()}
+    }
 
 	/**
 	 * Applies transformations for this display object to the given graphics

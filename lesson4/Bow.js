@@ -31,7 +31,7 @@ class Bow extends Sprite {
     shoot() {
         if (this.arrows.length < 20) {
             console.log("arrow created!");
-            let arrow = new Arrow("arrow", this.x + 145, this.y + 75);
+            let arrow = new Arrow("arrow", this.x + 145, this.y + 62);
             this.arrows.push(arrow);
         }
     }

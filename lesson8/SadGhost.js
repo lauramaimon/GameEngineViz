@@ -41,7 +41,7 @@ class SadGhost extends AnimatedSprite {
             this.goToFrame(2);
             this.msg = "The ghost looks kinda happy!";
         } 
-        else {
+        else if (this.getMood() > 120) {
             this.goToFrame(3);
             this.msg = "The ghost looks a little creeped out...";
         }

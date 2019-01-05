@@ -4,3 +4,5 @@ You enter a room with two buttons. Nothing happens when you press one... You won
 Hint: The green button is pretty hard to press down. You think Toad might not weigh enough.
 
 Hint: Making an object a child of another changes the origin of its coordinate system to the parent's position. This is useful for attaching objects to other objects.
+
+Hint: Only Lesson.js is editable

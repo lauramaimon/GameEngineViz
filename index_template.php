@@ -33,6 +33,9 @@
                 opacity: 0.2;
                 position: absolute;
             }
+            .nav-link {
+                padding: .5rem .6rem;
+            }
         </style>
     </head>
 
@@ -58,7 +61,7 @@
                             </ul> 
                         </div>
                         <div class="row float-right mr-1"> 
-                            <ul class="nav nav-pills mr-1">
+                            <ul class="nav nav-pills ml-0">
                               <!-- should insert dynamic amount of nav-items via PHP?-->
                               <!-- this would need to include dynamic numbering (eg. btn1, btn2, etc.) for jquery setting active status -->
                               <!-- OR use jquery "on" - buttons differentiated by file name (eg. via jquery get())) -->

@@ -4,3 +4,5 @@ Ah! Ghosts!
 Well, they don't actually look that scary. In fact they look pretty bummed out. You think you will try to cheer them up. Hopefully you won't come off as creepy...
 
 Hint: Take a look at the SadGhost class. This might tell you what would make them feel better. 
+
+Hint: Only Lesson.js is editable

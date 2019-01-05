@@ -4,3 +4,5 @@ When you walk into the room, you see a knight. He looks a little, uh, stiff. You
 Hint: Check out the Knight class to see what animations the knight knows how to do. It looks like they are never getting initiated...
 
 Hint: Might want to right click -> Inspect and look at the console to see what needs to happen!
+
+Hint: Only Knight.js is editable

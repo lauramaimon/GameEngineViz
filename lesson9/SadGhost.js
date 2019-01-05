@@ -58,7 +58,7 @@ class SadGhost extends AnimatedSprite {
                 }
             }
         } 
-        else {
+        else if (this.getMood() > 120) {
             this.goToFrame(3);
             this.msg = "Creeped out";
             this.resetTimeHappy();

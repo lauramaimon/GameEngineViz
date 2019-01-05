@@ -51,6 +51,14 @@ foreach($fileitems as $fileitem) {
 <script type="text/javascript" id="Sprite.js"></script>
 <script type="text/javascript" id="AnimatedSprite.js"></script>
 <script type="text/javascript" id="Game.js"></script>
+<script type="text/javascript" id="ParticleEmitter.js"></script>
+<script type="text/javascript" id="Tuple.js"></script>
+<script type="text/javascript" id="Water.js"></script>
+<script type="text/javascript" id="EventEmitter.js"></script>
+<script type="text/javascript" id="Tween.js"></script>
+<script type="text/javascript" id="Floor.js"></script>
+<script type="text/javascript" id="Fish.js"></script>
+<script type="text/javascript" id="Lesson4Scenery.js"></script>
 
 <script type="text/javascript" id="Door.js"></script>
 <script type="text/javascript" id="Bow.js"></script>

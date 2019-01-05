@@ -4,7 +4,7 @@
 class Target extends Sprite {
 
     constructor(id, posX, posY){
-        super(id, "target.png");
+        super(id, "red_target.png");
         this.x = posX;
         this.y = posY;
         this.hitcount = 0;
@@ -19,7 +19,7 @@ class Target extends Sprite {
             this.loadImage("blue_target.png");
             this.blue = true;
         } else if (Lesson4Game.frame_num % Lesson4Game.target_rate == 10) {
-            this.loadImage("target.png");
+            this.loadImage("red_target.png");
             this.blue = false;
         }
     }
@@ -28,7 +28,8 @@ class Target extends Sprite {
         super.draw(g);
         g.font = "48px courier";
         g.textAlign = "center"; 
-        g.fillText(20 - this.hitcount, this.x + 60, this.y - 74);
+        g.fillStyle = 'black';
+        g.fillText(20 - this.hitcount, this.x + 60, this.y - 90);
     }
 }
 
