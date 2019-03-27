@@ -1,5 +1,5 @@
 
-This one's easy. Just get to the door!
+Get to the door!
 
 Hint: Lots of games implement invincibility frames, so your player isn't continually getting hurt during every frame of a collision.
 

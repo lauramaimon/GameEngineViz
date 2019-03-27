@@ -7,7 +7,7 @@ class Lesson12Game extends Game {
     constructor(canvas) {
         super("Puzzle twelve", 800, 600, canvas);
         this.door = new Door("door", 635, 300, 5);
-        this.mario = new Mario("mario", 35, 400);
+        this.chicken = new Chicken("chicken", 35, 400);
         let cornerx = 25;
         let cornery = 25;
         // make the rocks
@@ -52,8 +52,8 @@ class Lesson12Game extends Game {
         ];
         this.door.addAnimation("open", 0, 4, false);
         this.winAnimationFrame = 0;
-        this.mario.scaleX = .55;
-        this.mario.scaleY = .55;
+        this.chicken.scaleX = 0.9;
+        this.chicken.scaleY = 0.9;
         this.door.scaleX = 2.4;
         this.door.scaleY = 2.4;
         this.addChild(this.door);
@@ -69,7 +69,7 @@ class Lesson12Game extends Game {
         });
 
 
-        this.addChild(this.mario);
+        this.addChild(this.chicken);
     }
 
     // invoked every frame
@@ -77,7 +77,7 @@ class Lesson12Game extends Game {
         super.update(pressedKeys);
 
         for (let i = 0; i < this.floorswitches.length; i++) {
-            if (this.mario.collidesWith(this.floorswitches[i])) {
+            if (this.chicken.collidesWith(this.floorswitches[i])) {
                 // you probably don't want to toggle the floor switch every frame you are colliding with it
 
 
@@ -104,8 +104,7 @@ class Lesson12Game extends Game {
                 var complete = new Event("complete");
                 window.parent.document.dispatchEvent(complete);
             }
-
-            this.door.playAnimation("open");
+            if (this.winAnimationFrame == 0) this.door.open();
             this.winAnimationFrame += 1;
         }
     }

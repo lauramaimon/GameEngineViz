@@ -82,6 +82,5 @@ function checkWallJumping(lesson) {
     } else {
         this.touchingLastFrame = false;
     }
-    console.log(this.wallTouches);
     return this.wallTouches;
 }

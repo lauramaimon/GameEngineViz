@@ -1,2 +1,2 @@
-Lesson.js/0,68;70,74;76,77;79,1000/false/true
+Lesson.js/0,64;66,70;72,73;75,1000/false/true
 Mario.js/0,0;0,0/true/true

@@ -18,7 +18,7 @@ class Lesson14Game extends Game {
 
         // you can use these to implement invincibility frames
         this.invincibilityFrames = 60;
-        this.timeSinceLastHit = this.invincibilityFrames;
+        this.timeSinceLastHit = Number.MAX_SAFE_INTEGER;
 
         this.door.addAnimation("open", 0, 4, false);
         this.winAnimationFrame = 0;
@@ -27,10 +27,6 @@ class Lesson14Game extends Game {
         this.door.scaleX = 2;
         this.door.scaleY = 2;
         this.won = false;
-
-
-
-        
 
         this.addChild(this.gate);
         this.addChild(this.door);

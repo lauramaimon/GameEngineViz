@@ -71,6 +71,14 @@ class Lesson13Game extends Game {
     update(pressedKeys, gamepads) {
         super.update(pressedKeys);
 
+        // safeguard to avoid crashes
+        this.allObjects.forEach((object) => {
+            if (Math.abs(object.x) > 1000000 || Math.abs(object.y) > 1000000) {
+                window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "Invalid object placement - too far offscreen! Click Run to restart."}}));
+                throw BreakException;
+            }
+        });
+
         // spikes are deadly!
         this.spikes.forEach((spikes) => {
             if (this.mario.collidesWith(spikes)) {
@@ -90,14 +98,14 @@ class Lesson13Game extends Game {
 
         // keep track of current wall collisions
         if (this.mario.collidesWith(this.leftwall)) {
-            this.mario.leftJump = true;
+            this.mario.onLeftWall = true;
         } else {
-            this.mario.leftJump = false;
+            this.mario.onLeftWall = false;
         }
         if (this.mario.collidesWith(this.rightwall)) {
-            this.mario.rightJump = true;
+            this.mario.onRightWall = true;
         } else {
-            this.mario.rightJump = false;
+            this.mario.onRightWall = false;
         }
         
         let result = checkWallJumping(this);
@@ -115,11 +123,10 @@ class Lesson13Game extends Game {
                 this.door.playAnimation("open");
                 this.winAnimationFrame += 1;
             } else {
-                window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "You didn't touch the wall enough times - make you are wall jumping!"}}));
-                this.pause();
+                window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "You didn't touch the wall enough times - make sure you are wall jumping!"}}));
+                throw BreakException;
             }
         }
-
 
         // handle the tops of the walls
         if (this.mario.x < this.leftfloor.x + 997) {
@@ -137,16 +144,20 @@ class Lesson13Game extends Game {
             this.won = true;
         }
 
-        // keep track of a global y position for scrolling
-        this.mario.globaly = this.mario.y;
-        
-        // Vertical distance between the center
-        // of the screen and mario's (would-be)
-        // y position. AKA, the amount to move the 
-        // whole scene down by.
-        let diff = 300 - this.mario.y;
-
-        // your code to scroll vertically! 
+        // your code to scroll vertically!
+        // ------------------------------
+        // hint: Mario should be in the center 
+        // of the screen (vertically). Try to 
+        // figure out the distance between mario 
+        // and the center of the screen (AKA the 
+        // amount to move the whole scene down by)
+        // ------------------------------
+        // hint: y = 0 is the top of the screen, 
+        // and y = 600 is the bottom of the screen.
+        // ------------------------------
+        // hint: you can access and control an
+        // object's position with object.x and 
+        // object.y
 
 
 

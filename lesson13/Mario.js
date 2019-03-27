@@ -11,9 +11,12 @@ class Mario extends Sprite {
 
         this.xspeed = 0;
         this.yspeed = 0;
-        this.jumping = true;
-        this.leftJump = false;
-        this.rightJump = false;
+
+        // whether mario jump is currently allowed to jump
+        this.canJump = false;
+        this.onLeftWall = false;
+        this.onRightWall = false;
+        this.onWall = false;
 
         this.walkSpeed = 6;
         this.jumpSpeed = -11;
@@ -28,7 +31,7 @@ class Mario extends Sprite {
         
         super.update(pressedKeys, gamePads);
 
-        this.onWall = this.leftJump || this.rightJump;
+        this.onWall = this.onLeftWall || this.onRightWall;
 
         if (pressedKeys.contains(37) && !this.onWall) {
             this.xspeed = -this.walkSpeed;
@@ -45,9 +48,9 @@ class Mario extends Sprite {
         else {
             this.xspeed = 0;
         }
-        if (pressedKeys.contains(38) && !this.jumping) {
+        if (pressedKeys.contains(38) && this.canJump) {
             this.yspeed = this.jumpSpeed;
-            this.jumping = true;
+            this.canJump = false;
         }
         if (this.onWall) {
 
@@ -55,10 +58,10 @@ class Mario extends Sprite {
             this.yspeed = 0.1;
             this.xspeed = 0;
         }
-        if (this.leftJump && pressedKeys.contains(39)) {
+        if (this.onLeftWall && pressedKeys.contains(39)) {
             this.xspeed = this.walkSpeed;
         }
-        if (this.rightJump && pressedKeys.contains(37)) {
+        if (this.onRightWall && pressedKeys.contains(37)) {
             this.xspeed = -this.walkSpeed;
         }
 
@@ -78,7 +81,7 @@ class Mario extends Sprite {
             this.y = oldy + dist;
             dist = dist * 0.5;
             this.yspeed = 0;
-            this.jumping = false;
+            this.canJump = true;
         }
     }
 

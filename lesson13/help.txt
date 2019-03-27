@@ -1,7 +1,7 @@
 
-Looks like there's only one way to go.
+Looks like there's only one way to go, but you can't seem to get very high. If only you could wall jump! Wall jumping is when a player can jump from wall to wall without landing on the ground in between (which typically allows you to get to hard-to-reach places). When mario hits a wall, he starts sliding down. During this time, mario could jump off the wall, almost like it was the ground.
 
-Hint: You might need to implement camera scrolling so you can see what you're doing!
+Hint: Don't forget to implement camera scrolling so you can see what you're doing! (Mario should always be in the center of the screen vertically)
 
 Hint: To move the "camera" up, you need to move everything in the scene down.
 

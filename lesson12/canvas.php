@@ -54,7 +54,7 @@ foreach($fileitems as $fileitem) {
 <script type="text/javascript" id="Rock.js"></script>
 
 <script type="text/javascript" id="Door.js"></script>
-<script type="text/javascript" id="Mario.js"></script>
+<script type="text/javascript" id="Chicken.js"></script>
 <script type="text/javascript" id="FloorSwitch.js"></script>
 <script type="text/javascript" id="Lesson.js"></script>
 

@@ -7,10 +7,10 @@ class Knight extends AnimatedSprite {
         // Add animations. To play an animation, call
         // this.playAnimation("walk")
         // every frame that you want to play the animation.
-        this.addAnimation("walk", 1, 4, true);
-        this.addAnimation("stand", 0, 0, false);
-        this.addAnimation("jump_up", 6, 7, false);
-        this.addAnimation("jump_down", 8, 9, false);
+        this.addAnimation("walk", 1, 4, /* repeat = */ true); 
+        this.addAnimation("stand", 0, 0, /* repeat = */ false);
+        this.addAnimation("jump_up", 6, 7, /* repeat = */ false);
+        this.addAnimation("jump_down", 8, 9, /* repeat = */ false);
         this.x = posX;
         this.y = posY;
         this.scaleX = 1; // hint: if this is negative, the sprite is flipped!

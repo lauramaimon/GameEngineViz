@@ -17,6 +17,7 @@ class Lesson11Game extends Game {
         this.door.scaleY = 2.4;
         Lesson11Game.fail = this.fail;
         Lesson11Game.mario = this.mario;
+        this.addChild(this.door);
 
         this.blocks = [[], [], []];
 
@@ -42,9 +43,8 @@ class Lesson11Game extends Game {
 
         });
 
-        this.frameNum = 0;
+        Lesson11Game.msgDelay = -1;
 
-        this.addChild(this.door);
         this.addChild(this.floor);
         this.addChild(this.mario);
 
@@ -82,6 +82,13 @@ class Lesson11Game extends Game {
             this.door.playAnimation("open");
             this.winAnimationFrame += 1;
         }
+
+
+        if (Lesson11Game.msgDelay > 0) { Lesson11Game.msgDelay--; }
+        else if (Lesson11Game.msgDelay == 0) {
+            window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "GAME OVER - You kicked the blocks out of order"}}));
+            Lesson11Game.msgDelay = -1;
+        }
     }
 
 
@@ -101,7 +108,7 @@ class Lesson11Game extends Game {
     fail() {
         if (Block.outOfOrder) return;
         Block.outOfOrder = true;
-        window.parent.document.dispatchEvent(new CustomEvent("error", {detail: {msg: "GAME OVER - You kicked the blocks out of order"}}));
+        Lesson11Game.msgDelay = 20;
     }
 
     

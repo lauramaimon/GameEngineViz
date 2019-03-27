@@ -65,7 +65,7 @@ class Lesson10Game extends Game {
             this.door.playAnimation("open");
             this.winAnimationFrame += 1;
         } else if (result == -2) {
-            console.log("Your knight's sprite should flip based on which direction is moving or was last moving")
+            console.log("Your knight's sprite should flip based on which direction he is moving or was last moving")
         } else if (result == -3) {
             console.log("Your knight's walk animation should play")
         } else if (result == -4) {

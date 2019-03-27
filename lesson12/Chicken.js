@@ -1,15 +1,18 @@
 "use strict";
 
-class Mario extends Sprite {
+class Chicken extends AnimatedSprite {
 
     constructor(id, posX, posY){
-        super(id, "Mario.png");
+        super(id, "chicken", 16);
+        this.addAnimation("rightwalk", 0, 3, true);
+        this.addAnimation("leftwalk", 4, 7, true);
+        this.addAnimation("frontwalk", 8, 11, true);
+        this.addAnimation("backwalk", 12, 15, true);
         this.x = posX;
         this.y = posY;
         this.xspeed = 0;
         this.yspeed = 0;
         this.frameNum = 0;
-        this.jumping = false;
         this.facingRight = true;
         this.pivotX = 18;
         this.pivotY = 26;
@@ -26,23 +29,31 @@ class Mario extends Sprite {
             this.xspeed = -3;
             this.yspeed = 0;
             this.facingRight = false;
+            this.playAnimation("leftwalk");
         }
         else if (pressedKeys.contains(38)) {
             this.xspeed = 0;
             this.yspeed = -3;
+            this.playAnimation("backwalk");
         }
         else if (pressedKeys.contains(39)) {
             this.xspeed = 3;
             this.yspeed = 0;
             this.facingRight = true;
+            this.playAnimation("rightwalk");
         }
         else if (pressedKeys.contains(40)) {
             this.xspeed = 0;
             this.yspeed = 3;
+            this.playAnimation("frontwalk");
         } 
         else {
             this.xspeed = 0;
             this.yspeed = 0;
+            if (this.facingRight)
+                this.goToFrame(1);
+            else
+                this.goToFrame(5);
         }
 
         this.applyVelocity();

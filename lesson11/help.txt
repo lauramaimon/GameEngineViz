@@ -1,4 +1,4 @@
 
-Looks like you need to knock these towers down brick by brick, in a very specific order. Might want to change how collisions are handled...
+Looks like you need to knock these towers down brick by brick, in a very specific order. Might want to change how collisions are handled... (you probably want to only kick a block when you start colliding with a column)
 
 Hint: Only Lesson.js is editable
